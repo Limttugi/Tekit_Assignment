@@ -1,0 +1,266 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  margin: 0;
+  /* background-color: rgba(0, 0, 0, 0.9); */
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50rem;
+  height: 50rem;
+}
+
+/* 얼굴 */
+
+.face-wrapper {
+  width: 90%;
+  height: 56%;
+  background-color: rgba(246, 237, 198);
+  border-radius: 26rem 26rem 13rem 13rem;
+  border: 0.5rem solid black;
+}
+
+.face-hat {
+  z-index: 2;
+  position: absolute;
+  top: 15.4rem;
+  width: 32rem;
+  height: 3rem;
+  background-color: rgba(246, 237, 198);
+  border-top: 0.5rem solid black;
+  border-radius: 80%;
+}
+
+/* 귀 */
+
+.ear-wrapper {
+  position: absolute;
+  top: 18rem;
+  width: 100%;
+}
+
+.ear-wrapper > .ear {
+  width: 10rem;
+  height: 11rem;
+  background-color: rgba(246, 237, 198);
+  border-top: 0.5rem solid black;
+}
+
+.ear-wrapper > .ear.left {
+  position: absolute;
+  bottom: 0;
+  left: 14%;
+  border-radius: 8rem 5rem 7rem 7rem;
+  border-left: 0.5rem solid black;
+}
+
+.ear-wrapper > .ear.right {
+  position: absolute;
+  bottom: 0;
+  right: 14%;
+  border-radius: 5rem 8rem 7rem 7rem;
+  border-right: 0.5rem solid black;
+}
+
+/* 모자 */
+
+.hat-wrapper {
+  z-index: 1;
+  position: absolute;
+  top: 4.2rem;
+  width: 62%;
+  height: 11.8rem;
+  border-radius: 9rem 9rem 0 0;
+  border: 0.5rem solid black;
+  background-color: red;
+  background: linear-gradient(90deg, green 33.333333%, rgba(0, 38, 84, 0) 33.333333%),
+    linear-gradient(90deg, yellow 66.666666%, red 66.666666%);
+  /* background-color: rgba(71, 71, 71); */
+}
+
+.hat-wrapper > .hat-border {
+  position: absolute;
+  top: 0;
+  right: 5rem;
+  width: 0;
+  height: 0;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 60% 60% 40% 40%;
+  transform: rotate(10deg);
+  border-top: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid transparent;
+  border-left: 0.5rem solid black;
+  border-right: 0.5rem solid transparent;
+}
+
+.hat-wrapper > .hat-propeller-wrapper {
+  position: absolute;
+  top: -6.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14rem;
+  height: 6rem;
+}
+
+.hat-wrapper > .hat-propeller-wrapper > .propeller {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 80%;
+  height: 1rem;
+  background-color: blue;
+  border-radius: 30% 30% 30% 30%;
+  border: 0.3rem solid black;
+}
+.propeller.left {
+  left: -5rem;
+}
+
+.hat-propeller-wrapper > .mid {
+  z-index: 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1rem;
+  height: 84%;
+  background-color: blue;
+  border: 0.3rem solid black;
+}
+
+.propeller.right {
+  right: -5rem;
+}
+
+.hat-cap {
+  z-index: 0;
+  position: absolute;
+  top: 14.8rem;
+  right: 0rem;
+  width: 0;
+  height: 0;
+  width: 16rem;
+  height: 1.4rem;
+  /* background-color: rgba(71, 71, 71); */
+  background-color: green;
+  transform: rotate(20deg);
+  border-radius: 0 40% 40% 0;
+  border: 0.5rem solid black;
+}
+
+/* 선글라스 */
+
+.sunglasses-wrapper {
+  z-index: 4;
+  position: absolute;
+  top: 19rem;
+  width: 32rem;
+  height: 8rem;
+}
+
+.sunglasses-wrapper > .sunglasses-lens {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  width: 43%;
+  height: 100%;
+  border-radius: 2rem;
+  background-color: #33ff3353;
+  border: 0.5rem solid #33ff33;
+}
+
+.curtain {
+  width: 100%;
+  height: 0.5rem;
+  background-color: #33ff3378;
+}
+
+.sunglasses-wrapper > .sunglasses-lens.left {
+  left: 0;
+}
+
+.sunglasses-wrapper > .sunglasses-lens.right {
+  right: 0;
+}
+
+.sunglasses-wrapper > .sunglasses-mid {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8%;
+  height: 5rem;
+  background-color: #33ff3353;
+  border: 0.4rem solid #33ff33;
+}
+
+/* 코 */
+
+.nose {
+  z-index: 10;
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 3rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: black;
+}
+
+/* 입 */
+
+.mouth-wrapper {
+  z-index: 9;
+  position: absolute;
+  top: 62%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10rem;
+  height: 3rem;
+}
+
+.mouth-wrapper > .mouth {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 80%;
+  border-top: 0.5rem solid transparent;
+  border-bottom: 0.5rem solid black;
+  border-left: 0.5rem solid transparent;
+  border-right: 0.5rem solid transparent;
+  border-radius: 70%;
+}
+
+.mouth-wrapper > .mouth.left {
+  left: 0;
+}
+
+.mouth-wrapper > .mouth.right {
+  right: 0;
+}
+
+.mouth-wrapper > .mid {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.5rem;
+  height: 100%;
+  background-color: black;
+}
