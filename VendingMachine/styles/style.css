@@ -1,0 +1,393 @@
+@import './reset.css';
+
+body {
+  width: 100%;
+  height: 100%;
+  min-width: 360px;
+  background-color: #eae8fe;
+}
+
+header {
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+header > .mainLogo {
+  width: 390px;
+  height: 180px;
+  background-image: url('../images/logo.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.vending-machine-container {
+  display: grid;
+  grid-template-columns: 360px 360px;
+  grid-template-rows: 50px 474px;
+  gap: 30px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 748px;
+  height: 545px;
+}
+
+.vending-machine-container > .vending-machine-part-container {
+  background-color: white;
+}
+
+.vending-machine-part-container:nth-child(1) {
+  grid-row: 1 / 3;
+
+  padding: 30px 27px;
+}
+
+.vending-machine-part-container:nth-child(2) {
+  padding: 9px 27px;
+}
+
+.vending-machine-part-container:nth-child(3) {
+  padding: 26px 27px;
+}
+
+/* 자판기 */
+
+.vending-machine {
+  display: grid;
+  grid-template-rows: 280px 33px 33px 106px;
+  gap: 13px;
+}
+
+.vending-machine > .vending-machine-item:not(:nth-child(1)) {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 12px;
+}
+
+.vending-machine > .vending-machine-item {
+  border-radius: 5px;
+}
+
+/* 자판기 콜라 종류 */
+
+.drink-item.border {
+  border: 3px solid #6327fe;
+}
+
+.drink-item > .sold-out-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.drink-item > .sold-out-container > .sold-out-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 60px;
+}
+
+.drink-item-container {
+  display: grid;
+  grid-template-columns: 94px 94px 94px;
+  grid-template-rows: 130px 130px;
+  gap: 12px;
+}
+
+.drink-item-container > .drink-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+
+  border-radius: 10px;
+  padding: 12px;
+  background-color: white;
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+}
+
+.drink-item-container > .drink-item > .cola-kind.big {
+  width: 36px;
+  height: 65px;
+}
+
+.drink-item-container > .drink-item > .cola-price {
+  border-radius: 50px;
+
+  width: 100%;
+  height: 22px;
+  line-height: 22px;
+
+  color: white;
+  font-size: 12px;
+  text-align: center;
+
+  background-color: #6327fe;
+}
+
+/* 자판기 잔액, 거스름돈 반환 */
+
+/* 자판기 입금 */
+
+.money-deposit > input {
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  padding: 0 6px;
+
+  flex: 1;
+  height: 33px;
+}
+
+.money-deposit > input:focus {
+  outline: none;
+}
+
+/* 자판기 획득 콜라 */
+
+.get-cola {
+  height: 100%;
+}
+
+/* 소지금 */
+
+.pocket-money > .display-money > .money {
+  font-weight: 700;
+}
+
+/* 획득한 음료 */
+
+.get-drink {
+  display: flex;
+  flex-direction: column;
+}
+
+.get-drink > h2 {
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.get-drink > .cola-list-container {
+  margin: 13px 0 6px 0;
+}
+
+.get-drink > .total-price {
+  text-align: right;
+}
+
+/* components */
+
+.cola-list-container {
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+
+  padding: 12px 4px 12px 12px;
+  overflow-y: scroll;
+  background-color: #eae8fe;
+}
+
+.cola-list-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.cola-list-container::-webkit-scrollbar-thumb {
+  border: 4px solid transparent;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  border-radius: 50px;
+
+  height: 79px;
+  background-color: white;
+  background-clip: padding-box;
+}
+
+.cola-list {
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 7px 10px;
+
+  background-color: white;
+
+  height: 46px;
+}
+
+.cola-list:last-child {
+  margin-bottom: 0;
+}
+
+.cola-list > .cola-kind {
+  width: 18px;
+  height: 33px;
+}
+
+.cola-list > .cola-name {
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 13px;
+  color: #333333;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.cola-list > span {
+  border: 1px solid #bdbdbd;
+  border-radius: 5px;
+
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.display-money {
+  border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 6px 10px;
+
+  flex: 1;
+  height: 33px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  background-color: #eae8fe;
+}
+
+.display-money > .money {
+  margin-left: auto;
+}
+
+.button {
+  cursor: pointer;
+
+  border: none;
+  border-radius: 5px;
+
+  width: 94px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
+}
+
+.button.white {
+  color: black;
+  background-color: white;
+}
+
+.button.purple {
+  color: white;
+  background-color: #6327fe;
+}
+
+/* 모바일 버전 */
+
+@media (max-width: 767px) {
+  body {
+    background-color: white;
+  }
+
+  header > .mainLogo {
+    width: 166px;
+    height: 71px;
+  }
+
+  .vending-machine-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+
+    width: auto;
+    height: auto;
+
+    margin-top: 100px;
+  }
+
+  .vending-machine-part-container {
+    width: 100%;
+    padding: 0;
+  }
+
+  .vending-machine-part-container:nth-child(1) {
+    padding: 0 27px;
+  }
+  .vending-machine-part-container:nth-child(2) {
+    padding: 20px 27px 41px 27px;
+  }
+
+  .vending-machine-part-container:nth-child(3) {
+    padding: 0 27px;
+  }
+
+  /* 자판기 */
+  .vending-machine {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .vending-machine > .drink-item-container {
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+
+  .vending-machine > .drink-item-container > .drink-item > .sold-out-container > .sold-out-image {
+    top: 24px;
+    transform: translate(-50%, 0);
+  }
+
+  /* 자판기 입금 */
+  .money-deposit {
+    margin: 11px 0;
+  }
+
+  /* 자판기 획득 콜라 */
+  .get-cola {
+    height: 106px;
+  }
+
+  /* 획득한 음료 */
+  .get-drink {
+    margin-bottom: 43px;
+  }
+
+  .get-drink > .cola-list-container {
+    flex: none;
+    height: 364px;
+  }
+}
