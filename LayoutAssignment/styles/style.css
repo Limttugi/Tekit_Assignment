@@ -1,24 +1,23 @@
-@import './reset.css';
-
 :root {
   font-family: 'Montserrat', sans-serif;
 }
 
-body {
-  width: 100vw;
-  height: 100vh;
+.layout-section {
+  width: 100%;
+  height: 1080px;
   background-color: #673399;
 }
 
-header {
-  padding: 0 420px;
-  margin: 100px 0;
-  height: auto;
+/* header */
+.section-header-container {
+  width: 1080px;
+  padding-top: 100px;
+  margin-bottom: 100px;
   display: flex;
   align-items: center;
 }
 
-header > .header-name {
+.header-name {
   position: relative;
   line-height: 50px;
   color: white;
@@ -26,11 +25,11 @@ header > .header-name {
   margin-right: 30px;
 }
 
-.header > .header-name > .orange-text {
+.header-name > .orange-text {
   position: relative;
 }
 
-header > .header-name > .orange-text::before {
+.orange-text::before {
   position: absolute;
   left: 0;
   bottom: 0;
@@ -41,11 +40,11 @@ header > .header-name > .orange-text::before {
   background-color: orangered;
 }
 
-header > .header-name > .orange-text:nth-child(1)::before {
+.orange-text:nth-child(1)::before {
   bottom: 50px;
 }
 
-header > .header-text {
+.header-text {
   position: relative;
   color: #bd8fe8;
   font-size: 14px;
@@ -53,7 +52,7 @@ header > .header-text {
   margin-left: 100px;
 }
 
-header > .header-text::before {
+.header-text::before {
   content: '';
   position: absolute;
   left: -100px;
@@ -63,11 +62,15 @@ header > .header-text::before {
   background-color: #bd8fe8;
 }
 
-main {
+/* !header */
+
+/* main */
+.layout-section {
   padding: 0 420px;
 }
 
-main > ul {
+.layout-section > ul {
+  width: 1080px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -133,3 +136,5 @@ main > ul {
 .list-text > ul > li::marker {
   color: #bd8fe8;
 }
+
+/* !main */
