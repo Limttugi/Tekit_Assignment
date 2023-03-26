@@ -1,6 +1,6 @@
-# 이종찬 강사님 과제 
+# 이종찬 강사님 과제 모음
 
-url : https://limttugi.github.io/Tekit_Assignment/이종찬강사님 과제 모음/
+url : https://limttugi.github.io/Tekit_Assignment/이종찬강사님과제모음/
 
 <hr />
 <br />
