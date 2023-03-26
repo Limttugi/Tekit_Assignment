@@ -1,9 +1,5 @@
-.events-section {
+#events-section {
   background-color: seashell;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 1080px;
 }
 
 .width-1080px {
@@ -47,10 +43,6 @@
 /* !header */
 
 /* main */
-main {
-  /* margin: 100px 0; */
-}
-
 .list-container {
   display: flex;
   justify-content: space-between;
