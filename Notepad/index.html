@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    <link rel="stylesheet" href="reset.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <section>
+        <label>
+          <h3>메모 이름</h3>
+          <input type="text" id="memoTitle" placeholder="메모 제목을 입력하세요..." />
+        </label>
+        <div id="editor"></div>
+      </section>
+      <section>
+        <h2>메모 리스트</h2>
+        <ul id="memoListContainer"></ul>
+      </section>
+    </main>
+
+    <script>
+      const memoInLocalStorage = localStorage.getItem('MEMOS');
+      let memoIndex = localStorage.getItem('MEMO_INDEX');
+      let memos = JSON.parse(memoInLocalStorage);
+
+      if (!memoIndex || !memoInLocalStorage || memos.length === 0) localStorage.setItem('MEMO_INDEX', 0);
+      memos = memos ?? [];
+
+      const Editor = toastui.Editor;
+
+      const editor = new Editor({
+        el: document.querySelector('#editor'),
+        height: '500px',
+        initialEditType: 'markdown',
+        previewStyle: 'vertical',
+      });
+
+      renderMemo();
+      handleCreateButtonToAddMemo();
+      handleCreateButtonToSaveTextFile();
+
+      function addMemo() {
+        localStorage.setItem('MEMO_INDEX', ++memoIndex);
+        let memoTitle = document.getElementById('memoTitle').value;
+        memoTitle === '' && (memoTitle = '제목이 없습니다');
+
+        const content = editor.getHTML();
+
+        memos.push({ title: memoTitle, id: memoIndex, content });
+
+        localStorage.setItem('MEMOS', JSON.stringify(memos));
+        renderMemo();
+      }
+
+      function renderMemo() {
+        const memoListContainer = document.querySelector('#memoListContainer');
+        memoListContainer.replaceChildren();
+
+        for (const memo of memos) {
+          // 메모 리스트 추가
+          const memoListElement = document.createElement('li');
+          // 메모 타이틀, 컨텐츠 추가
+          memoListElement.innerHTML = `<h4>${memo.title}</h4>` + memo.content;
+          // 삭제 버튼 추가
+          const deleteButton = document.createElement('button');
+          deleteButton.innerHTML = '삭제하기';
+          deleteButton.className = 'memoRemoveButton';
+          deleteButton.setAttribute('type', 'button');
+          deleteButton.addEventListener('click', () => removeThisMemo(memo.id));
+
+          memoListElement.appendChild(deleteButton);
+          memoListContainer.appendChild(memoListElement);
+        }
+      }
+
+      // 메모 삭제하기
+      function removeThisMemo(id) {
+        for (let i = 0; i < memos.length; i++) {
+          if (id === memos[i].id) {
+            memos.splice(i, 1);
+            break;
+          }
+        }
+        localStorage.setItem('MEMOS', JSON.stringify(memos));
+        renderMemo();
+      }
+
+      // 메모 추가 버튼 하단 메뉴바에 추가하기
+      function handleCreateButtonToAddMemo() {
+        const bottomMenu = document.querySelector('.toastui-editor-mode-switch');
+        const btn = document.createElement('button');
+        btn.innerHTML = '메모 추가';
+        btn.setAttribute('id', 'addMemoButton');
+        btn.setAttribute('type', 'button');
+        btn.addEventListener('click', () => addMemo());
+        bottomMenu.appendChild(btn);
+      }
+
+      function handleCreateButtonToSaveTextFile() {
+        const bottomMenu = document.querySelector('.toastui-editor-mode-switch');
+        const btn = document.createElement('button');
+        btn.innerHTML = 'txt 파일로 저장';
+        btn.setAttribute('id', 'saveTxtButton');
+        btn.setAttribute('type', 'button');
+        btn.addEventListener('click', () => saveTextFile());
+        bottomMenu.appendChild(btn);
+      }
+
+      const saveTxtButton = document.querySelector('#saveTxtButton');
+
+      function saveTextFile() {
+        const content = editor.getHTML();
+
+        saveTxtButton.addEventListener('click', () => {
+          const blob = new Blob([content], { type: 'text/plain' });
+
+          const downloadLink = document.createElement('a');
+          downloadLink.download = 'notepad.txt';
+
+          downloadLink.href = URL.createObjectURL(blob);
+
+          downloadLink.click();
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+main {
+  display: flex;
+  padding: 20px;
+  gap: 1rem;
+}
+label {
+  display: block;
+  border-radius: 5px 5px 0 0;
+  border: 1px solid lightgray;
+  border-bottom: none;
+}
+label > h3 {
+  font-size: 2rem;
+  padding: 5px;
+  padding-bottom: 0;
+}
+#memoTitle {
+  width: 100%;
+  padding: 5px;
+  outline: none;
+}
+#addMemoButton,
+#saveTxtButton {
+  border-right: 1px solid lightgray;
+  height: 100%;
+  padding: 0 1rem;
+  float: left;
+}
+section {
+  height: 54.8rem;
+}
+section:nth-child(1) {
+  flex: 1;
+}
+section:nth-child(2) {
+  border: 1px solid lightgray;
+  flex: 1;
+  padding: 1rem;
+  overflow: scroll;
+}
+section:nth-child(2) > h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+li {
+  position: relative;
+  border-bottom: 1px solid lightgray;
+  padding-bottom: 1rem;
+}
+li:first-child {
+  border-top: 1px solid lightgray;
+}
+.memoRemoveButton {
+  border: 1px solid lightgray;
+  position: absolute;
+  right: 0;
+  top: 0.5rem;
+}
+h4 {
+  border-bottom: 1px solid gray;
+  width: fit-content;
+  padding: 0.5rem 0;
+  margin: 0.5rem 0;
+}
